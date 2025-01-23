@@ -2,7 +2,7 @@
 ### INTEGRANTE: JOHN PAUL SARITAMA SARITAMA
 ## 1. ¿Qué es JDBC y cuáles son sus componentes?
 
-es una API que proporciona una interfaz estándar para que las aplicaciones en Java puedan conectarse y operar sobre bases de datos. Gracias a JDBC, los desarrolladores pueden interactuar con distintos sistemas de bases de datos de manera uniforme. Sus principales componentes son:
+Es una API que proporciona una interfaz estándar para que las aplicaciones en Java puedan conectarse y operar sobre bases de datos. Gracias a JDBC, los desarrolladores pueden interactuar con distintos sistemas de bases de datos de manera uniforme. Sus principales componentes son:
 
 Driver JDBC: Permite la comunicación con bases de datos específicas.
 
