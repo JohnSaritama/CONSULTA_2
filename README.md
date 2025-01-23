@@ -86,7 +86,7 @@ println("Conexión establecida con éxito!")
 ```
 
 
-Ejecutar una consulta
+#### -Ejecutar una consulta
 
 Se crea un Statement con conexion.createStatement().
 
@@ -97,7 +97,7 @@ val resultSet = declaracion.executeQuery("SELECT * FROM peliculas")
 ```
 
 
- Procesamiento de resultados
+ #### -Procesamiento de resultados
 
 Se recorren las filas de resultSet para construir objetos Pelicula.
 ```Scala
@@ -115,7 +115,7 @@ while (resultSet.next()) {
 }
 ```
 
-Liberar recursos
+#### -Liberar recursos
 
 Se cierran los recursos en el bloque finally para evitar fugas de memoria.
 ```Scala
@@ -124,10 +124,16 @@ if (declaracion != null) { declaracion.close() }
 if (conexion != null) { conexion.close() }
 ```
 
-Resultados en la terminal:
+#### -Resultados en la terminal:
+Se imprime con:
 ```Scala
 peliculas.foreach(p => println(s"Título: ${p.titulo}, Director: ${p.director}, Año: ${p.anio}, Género: ${p.genero}"))
 ```
+
+RESULTADO:
+
+![image](https://github.com/user-attachments/assets/184aa5a7-e80c-4a48-bab6-697d7eab782e)
+
 ### 3.5 CODIGO COMPLETO
 ```Scala
 import java.sql.{Connection, DriverManager, ResultSet}
