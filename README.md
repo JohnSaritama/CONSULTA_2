@@ -58,9 +58,16 @@ INSERT INTO peliculas (titulo, director, anio, genero) VALUES
 
 ### 3.3 Desde Scala establezca la conexión a la base datos
 Agrego la dependencia en Scala que permite interactuar con MySQL:
-
+```Scala
+libraryDependencies += "mysql" % "mysql-connector-java" % "8.0.33"
+```
 Luego agrego la ruta de acceso:
-
+```Scala
+val url = "jdbc:mysql://localhost:3306/peliculasDB?useSSL=false"
+val usuario = "root"
+val contraseña = "tu_contraseña"
+```
+Los cuales representa lo siguiente:
 url: Ruta de acceso a la base de datos, que incluye el nombre de la base (peliculasDB) y useSSL=false para deshabilitar el uso de SSL.
 
 usuario y contraseña: Credenciales para acceder al servidor MySQL.
@@ -68,11 +75,15 @@ usuario y contraseña: Credenciales para acceder al servidor MySQL.
 ### 3.4 Desde Scala realice la consulta de todos los datos de la tabla de prueba. 
 
 Se utiliza Class.forName("com.mysql.cj.jdbc.Driver") para cargar el driver necesario.
-
-
+```Scala
+Class.forName("com.mysql.cj.jdbc.Driver")
+```
 
 Se utiliza DriverManager.getConnection con los parámetros definidos.
-
+```Scala
+val conexion = DriverManager.getConnection(url, usuario, contraseña)
+println("Conexión establecida con éxito!")
+```
 
 
 Ejecutar una consulta
@@ -80,18 +91,43 @@ Ejecutar una consulta
 Se crea un Statement con conexion.createStatement().
 
 La consulta SELECT * FROM peliculas se ejecuta y el resultado se almacena en resultSet.
-
+```Scala
+val declaracion = conexion.createStatement()
+val resultSet = declaracion.executeQuery("SELECT * FROM peliculas")
+```
 
 
  Procesamiento de resultados
 
 Se recorren las filas de resultSet para construir objetos Pelicula.
+```Scala
+var peliculas = List[Pelicula]()
+
+while (resultSet.next()) {
+  val pelicula = Pelicula(
+    resultSet.getInt("id"),
+    resultSet.getString("titulo"),
+    resultSet.getString("director"),
+    resultSet.getInt("anio"),
+    resultSet.getString("genero")
+  )
+  peliculas = pelicula :: peliculas
+}
+```
 
 Liberar recursos
 
 Se cierran los recursos en el bloque finally para evitar fugas de memoria.
+```Scala
+if (resultSet != null) { resultSet.close() }
+if (declaracion != null) { declaracion.close() }
+if (conexion != null) { conexion.close() }
+```
 
 Resultados en la terminal:
+```Scala
+peliculas.foreach(p => println(s"Título: ${p.titulo}, Director: ${p.director}, Año: ${p.anio}, Género: ${p.genero}"))
+```
 ### 3.5 CODIGO COMPLETO
 ```Scala
 import java.sql.{Connection, DriverManager, ResultSet}
