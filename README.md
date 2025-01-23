@@ -101,7 +101,7 @@ case class Pelicula(id: Int, titulo: String, director: String, anio: Int, genero
 object ConexionMySQLPeliculas extends App {
   val url = "jdbc:mysql://localhost:3306/peliculasDB?useSSL=false"
   val usuario = "root"
-  val contrasena = "mi_contraseña"
+  val contrasena = "JOHN"
 
   var conexion: Connection = null
   var declaracion: java.sql.Statement = null
