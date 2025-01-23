@@ -189,4 +189,12 @@ object ConexionMySQLPeliculas extends App {
 
 "Doobie Documentation." Tpolecat. Disponible en: https://tpolecat.github.io/doobie/
 
+ Oracle Corporation. (s.f.). MySQL Connector/J documentation. Recuperado de https://dev.mysql.com/doc/connector-j/en/
 
+ Albahari, B. (2013). Scala Cookbook: Recipes for object-oriented and functional programming. O'Reilly Media. Recuperado de https://www.scala-cookbook.com/
+
+ Baeldung. (s.f.). Scala and JDBC connection tutorial. Recuperado de https://www.baeldung.com/scala/connect-to-mysql
+
+Tpolecat. (2023). Cats Effect documentation. Recuperado de https://typelevel.org/cats-effect/
+
+ Lightbend Inc. (s.f.). Slick 3.3.3: Scala functional relational mapping. Recuperado de https://scala-slick.org/
